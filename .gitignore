@@ -1,6 +1,5 @@
-#logs and backups
-cronbackup/
-
+#logs / backups / data
+data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
