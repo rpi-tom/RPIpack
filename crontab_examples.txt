@@ -1,0 +1,18 @@
+30 * * * * usr/bin/bash /home/pi/RPIpack/cpu_temp_log.sh >> /home/pi/RPIpack/logs/cronlog_cpu_temp_log 2>&1 &
+### THIS TAKES THE CPU TEMP OF THE PI AT EVERY 30 MINS PAST THE HOUR AND POSTS THEM '/home/pi/RPIpack/logs/cpu_temp_log' ###
+
+5 1 * * * sudo reboot
+### THIS REBOOTS THE PI AT 01:05AM EACH NIGHT###
+
+@reboot usr/bin/bash /home/pi/RPIpack/restartlogging.sh >> /home/pi/RPIpack/logs/cronlog_restart_logging 2>&1 *
+### THIS INCLUDES A CRONTAB BACKUP TO '/home/pi/RPIpack/cronbackup/crontab_$datetime' ###
+### THIS ALSO LISTS THE IP ADDRESS AND SSID CONNECTION ###
+
+@ reboot 
+### REBOOT SLOT ###
+
+#20 1 * * * /usr/bin/python3 /home/pi/RPIpack/s3_file_upload.py >> /home/pi/RPIpack/logs/s3_file_upload 2>&1 &
+### THIS CAN UPLOAD FILES TO S3 AT THE END OF EACH DAY ###
+
+# * * * * * /usr/bin/python3 /home/pi/TBC/TBC.py >> /home/pi/TBC/logs/XXX 2>&1 & 
+### THIS RUNS A SCRIPT AT A DEFINED FREQUENCY, OUPUTTING LOGS TO 'logs' FOLDER ###
