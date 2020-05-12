@@ -7,3 +7,7 @@ It supports:
 * Hourly CPU temperature logging
 * Example crontab entries
 * S3 file upload script
+
+Installation instructions:
+-----
+Run a git clone
