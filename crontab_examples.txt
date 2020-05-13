@@ -1,12 +1,12 @@
-30 * * * * /bin/sh /home/pi/RPIpack/cpu_temp_log.sh >> /home/pi/RPIpack/logs/cronlog_cpu_temp_log 2>&1 &
+30 * * * * /bin/sh /home/pi/RPIpack/cpu_temp_log.sh 2>> /home/pi/RPIpack/logs/cpu_temp_log_errors #2>&1 &
 ### THIS TAKES THE CPU TEMP OF THE PI AT EVERY 30 MINS PAST THE HOUR AND POSTS THEM '/home/pi/RPIpack/logs/cpu_temp_log' ###
 
 5 1 * * * sudo reboot
 ### THIS REBOOTS THE PI AT 01:05AM EACH NIGHT###
 
-@reboot /bin/sh /home/pi/RPIpack/restart_logging.sh >> /home/pi/RPIpack/logs/cronlog_restart_logging 2>&1
+@reboot /bin/sh /home/pi/RPIpack/restart_logging.sh 2>> /home/pi/RPIpack/logs/restart_logging_errors #2>&1 &
+### A LIST OF RESTART TIMES IS LOGGED AT '/home/pi/RPIpack/restart_logging' AND LIST INCLUDES IP ADDRESS AND SSID CONNECTION
 ### THIS INCLUDES A CRONTAB BACKUP TO '/home/pi/RPIpack/cronbackup/crontab_$datetime' ###
-### THIS ALSO LISTS THE IP ADDRESS AND SSID CONNECTION ###
 
 @ reboot 
 ### REBOOT SLOT ###
